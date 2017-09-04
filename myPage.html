@@ -1,0 +1,168 @@
+<!Doctype html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body{
+            background-color: #e6eeff;
+        }
+        .side-menu{
+            position: absolute;
+            border: 1px solid #ccc;
+            width:225px;
+            top:290px;
+            left:10px;
+            bottom:50px; 
+        }
+        
+        .side-menu ul{
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+
+        .side-menu a{
+            font-size: 22px;
+            display: block; 
+            color: black;
+            padding: 22px 16px; 
+            cursor: pointer;
+            transition: background-color ease-in .3s;
+            text-decoration:none;
+        }
+
+        .side-menu a:hover{
+            background-color:#ccc;
+        }
+        
+        .side-menu a.active{
+            background-color:#ccc;
+        }
+        
+        .side-menu ul.work-researsh{
+            display:none;
+        }
+        
+        .side-menu ul.work-researsh a{
+            padding-left:40px
+        }
+
+        .side-menu ul.projects-list{
+            display:none; 
+        }
+        
+        .side-menu ul.projects-list a{
+            padding-left:40px
+        }
+
+        .content-container{
+            margin-left:300px;
+        }
+        
+        .tabContent{
+            position: absolute;
+            top: 0px;
+            left: 280px;
+            display:none;
+            font-size: 22px;
+        }
+        
+        .tabContent:first-child{
+            position: absolute;
+            top: 0px;
+            left: 280px;
+            display:block;
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./profile.PNG" height="270" width="225" style="position:absolute; left:10px;">
+    <nav  class="side-menu">
+        <ul>
+            <li><a href="#about-me">About Myself</a></li>
+            <li><a href="#work-researsh-experience">Work/Researsh Experience</a>
+                <ul class="work-researsh">
+                    <li><a href="#professor-Vybihal">Professor-Vybihal's Lab</a></li>
+                </ul>
+            </li>            
+            <li><a href="#projects">Projects</a> 
+                <ul class="projects-list">
+                    <li><a href="#javascript-projects">Javascript</a></li>
+                    <li><a href="#cgi-projects">CGI</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <div id="about-me", class="tabContent">
+            <h1>Si Yi Li</h1>
+            <h3>Education</h3>
+            <ul style="list-style: none;">
+                <li>U4 McGill University student</li>
+                <li>Major: Biology and Computer Science</li>
+                <li>Minor: Pharmacology</li>
+            </ul>
+            <br>
+            
+            <h3>Work and Researsh Interests</h3>
+            <ul>
+                <li>Artificial intelligence</li>
+                <li>Autonomous system</li>
+                <li>Big data</li>
+                <li>Bioinformatic</li>
+                <li>Biomedical engineering</li>
+                <li>Database</li>
+                <li>Virtual reality</li>
+                <li>Web design</li>
+            </ul>
+            <br>
+            
+            <h3>Contact info</h3>            
+            <ul>
+                <li>E-mail: lisiyitoy@gmail.com</li>
+            </ul>
+        </div>
+        
+        <div id="professor-Vybihal", class="tabContent">
+            <h3>Professor-Vybihal's Lab</h3>
+            <p>This is the Professor-Vybihal's Lab section</p>
+        </div>
+        
+        <div id="javascript-projects", class="tabContent">
+            <h3>Javascript Project</h3>
+            <p>This is javascript project section</p>
+        </div>
+        
+        <div id="cgi-projects", class="tabContent">
+            <h3>CGI project</h3>
+            <p>This is the CGI project section</p>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function(){ 
+            var projectsList = $('ul.projects-list');
+            var work_researsh = $('ul.work-researsh');
+            $('nav').on('click','a',function(){
+                var contentId = $(this).attr('href');
+                if(contentId == '#projects'){
+                    projectsList.slideToggle(400);
+                }
+                else if(contentId == '#work-researsh-experience'){
+                    work_researsh.slideToggle(400);
+                }
+                else{
+                    $('.side-menu a').removeClass();
+                    $(this).addClass('active');
+                    $('.tabContent').fadeOut(0);
+                    $(contentId).fadeIn(300);
+                }
+            });            
+        });
+    </script>
+    
+</body>
+</html>
